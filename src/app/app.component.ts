@@ -56,7 +56,7 @@ export class AppComponent {
     phone: "",
   }
 
-  public showPresent: boolean = true;
+  public showPresent: boolean = false;
   public contactPhoneValues: string = "375 (29) 368-98-68";
   public linkInstagram: string = "https://www.instagram.com/"
 
