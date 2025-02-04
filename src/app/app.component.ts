@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ProductType} from "./types/good.type";
 import {ProductService} from "./services/product.service";
 import {CartService} from "./services/cart.service";
+import {AdvantageType} from "./types/advantage.type";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit {
     this.goods = this.productService.getProducts()
   }
 
-  public advantages = [
+  public advantages: AdvantageType[] = [
     {
       title: 'Лучшие продукты',
       description: 'Мы честно готовим макаруны только из натуральных и качественных продуктов. Мы не используем консерванты, ароматизаторы и красители'

@@ -98,17 +98,8 @@
 
 <section class="advantages">
   <div class="container advantages__container">
-    <div class="advantages__item" *ngFor="let advantage of advantages; let i = index">
-      <div class="advantages__item-number">
-        <span>{{i + 1}}</span>
-      </div>
-      <div class="advantages__item-title">
-        {{advantage.title}}
-      </div>
-      <div class="advantages__item-description">
-        {{advantage.description}}
-      </div>
-    </div>
+    <advantage *ngFor="let advantage of advantages; let i = index" [advantage]="advantage" [i] = "i">
+    </advantage>
   </div>
 </section>
 
@@ -117,7 +108,7 @@
     Выберите свой макарун
   </h2>
   <div class="container goods__container">
-    <good *ngFor="let good of goods" [good]="good"></good>
+    <good *ngFor="let good of goods;"  [good]="good" ></good>
   </div>
 </section>
 
