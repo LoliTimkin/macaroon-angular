@@ -1,12 +1,24 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductType} from "./types/good.type";
+import {ProductService} from "./services/product.service";
+import {CartService} from "./services/cart.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [ProductService]
 })
-export class AppComponent {
+
+export class AppComponent implements OnInit {
+  public goods: ProductType[] = [];
+
+  constructor(private productService: ProductService, public cartService: CartService) {
+  }
+
+  ngOnInit() {
+    this.goods = this.productService.getProducts()
+  }
 
   public advantages = [
     {
@@ -27,36 +39,13 @@ export class AppComponent {
     },
   ]
 
-  public goods: ProductType[] = [
-    {
-      title: 'Макарун с малиной',
-      price: 1.7,
-      img: 'macaroon-1.png'
-    },
-    {
-      title: 'Макарун с манго',
-      price: 1.7,
-      img: 'macaroon-2.png'
-    },
-    {
-      title: 'Пирог с ванилью',
-      price: 1.7,
-      img: 'macaroon-3.png'
-    },
-    {
-      title: 'Пирог с фисташками',
-      price: 1.7,
-      img: 'macaroon-4.png'
-    },
-  ]
-
   public formValues = {
     productTitle: "",
     name: "",
     phone: "",
   }
 
-  public showPresent: boolean = false;
+  public showPresent: boolean = true;
   public contactPhoneValues: string = "375 (29) 368-98-68";
   public linkInstagram: string = "https://www.instagram.com/"
 
@@ -67,6 +56,8 @@ export class AppComponent {
   public addToCard(product: ProductType, target: HTMLElement): void {
     this.scrollTo(target);
     this.formValues.productTitle = product.title;
+    this.cartService.count++;
+    this.cartService.sum = this.cartService.sum + product.price;
   }
 
 }

@@ -117,19 +117,7 @@
     Выберите свой макарун
   </h2>
   <div class="container goods__container">
-    <div class="goods__item" *ngFor=" let good of goods">
-      <div class="goods__item-image">
-        <img src="assets/images/{{good.img}}" alt="macaroon">
-      </div>
-      <div class="goods__item-title">
-        {{good.title}}
-      </div>
-      <div class="goods__info">
-        <span class="goods__quantity">1 шт.</span>
-        <span class="goods__price"> {{good.price}}0 руб</span>
-        <button class="btn goods__btn" (click)="addToCard(good, orderElement)">Заказать</button>
-      </div>
-    </div>
+    <good *ngFor="let good of goods" [good]="good"></good>
   </div>
 </section>
 
@@ -183,9 +171,11 @@
     </div>
   </div>
   <div class="present" *ngIf="showPresent">
-    <img src="assets/images/present.png" alt="present">
+    <img src="assets/images/cart.png" alt="present">
+    <span class="cart-count">{{cartService.count}}</span>
   </div>
   <div class="gift-message">
-    Оформите заказ и получите подарок
+    {{cartService.sum}}
+    <!--Оформите заказ и получите подарок-->
   </div>
 </footer>
