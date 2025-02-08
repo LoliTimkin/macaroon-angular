@@ -47,18 +47,19 @@ export class AppComponent implements OnInit {
   }
 
   public showPresent: boolean = true;
-  public contactPhoneValues: string = "375 (29) 368-98-68";
+  public contactPhoneValues: string = "375293689868";
   public linkInstagram: string = "https://www.instagram.com/"
 
   public scrollTo(target: HTMLElement): void {
       target.scrollIntoView({behavior: "smooth"})
   }
 
-  public addToCard(product: ProductType, target: HTMLElement): void {
+  public addToCart(product: ProductType, target: HTMLElement): void {
     this.scrollTo(target);
     this.formValues.productTitle = product.title;
     this.cartService.count++;
     this.cartService.sum = this.cartService.sum + product.price;
+    alert(product.title + " добавлен в корзину!")
   }
 
 }

@@ -7,8 +7,8 @@
   </div>
   <div class="goods__info">
     <span class="goods__quantity">1 шт.</span>
-    <span class="goods__price"> {{good.price}}0 руб</span>
-    <button class="btn goods__btn" >Заказать</button>
+    <span class="goods__price"> {{good.price | currency: 'RUB':'symbol':'1.2-2': "ru"}}</span>
+    <button class="btn goods__btn" (click)="addProductToCart()" BackgroundButton>Заказать</button>
   </div>
 </div>
 <!--(click)="addToCard(good, orderElement)"-->
