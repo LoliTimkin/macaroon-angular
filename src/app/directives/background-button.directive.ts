@@ -1,9 +1,11 @@
-import {Directive, ElementRef, HostListener, OnInit} from '@angular/core';
+import {Directive, ElementRef, HostListener, Input, OnInit} from '@angular/core';
 
 @Directive({
   selector: '[BackgroundButton]'
 })
 export class BackgroundButtonDirective implements OnInit{
+
+  @Input() BackgroundButtonBgImOnHover: string = 'linear-gradient(0deg, #d7475c 0%, #71081d 100%)'
 
   constructor(private el: ElementRef) {
     console.log(el.nativeElement)
@@ -11,7 +13,8 @@ export class BackgroundButtonDirective implements OnInit{
 
   @HostListener('mouseenter')
   onHover() {
-    this.el.nativeElement.style.backgroundImage = "linear-gradient(0deg, #d7475c 0%, #71081d 100%)"
+    this.el.nativeElement.style.backgroundImage = this.BackgroundButtonBgImOnHover
+
   }
 
   @HostListener('mouseleave')

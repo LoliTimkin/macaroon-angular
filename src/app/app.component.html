@@ -66,7 +66,7 @@
         Побалуйте себя и своих близких самыми вкусными и ароматными домашними пироженками Macaroon!
       </div>
       <div class="main__action">
-        <button class="btn main__btn" (click)="scrollTo(goodsElement)" BackgroundButton>Выбрать макарун</button>
+        <button class="btn main__btn" (click)="scrollTo(goodsElement)" BackgroundButton [BackgroundButtonBgImOnHover]="'linear-gradient(0deg, #006997 0%, #ba98f7 100%)'">Выбрать макарун</button>
       </div>
     </div>
     <div class="main__image">
@@ -167,7 +167,7 @@
     <span class="cart-count">{{cartService.count}}</span>
   </div>
   <div class="gift-message">
-    {{cartService.sum}}
+    {{cartService.sum | currency: 'RUB':'symbol':'1.2-2': "ru"}}
     <!--Оформите заказ и получите подарок-->
   </div>
 </footer>
